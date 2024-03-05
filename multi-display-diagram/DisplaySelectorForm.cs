@@ -117,6 +117,23 @@ namespace multi_display_diagram
             maxRight = buttonArray.Max(btn => btn.Right);
             maxBottom = buttonArray.Max(btn => btn.Bottom);
             workspacePanel.Size = new Size(maxRight, maxBottom);
+
+            scaleX = widthB4 / (double) workspacePanel.Width;
+            scaleY = heightB4 / (double)workspacePanel.Height;
+            scale = Math.Max(scaleX, scaleY);
+
+            var trimmedWidth = workspacePanel.Width;
+            var trimmedHeight = workspacePanel.Height;
+
+            workspacePanel.Width = (int)(trimmedWidth * scale);
+            workspacePanel.Height = (int)(trimmedHeight * scale);
+
+            foreach (Button btn in workspacePanel.Controls)
+            {
+                btn.Width = (int)(btn.Width * scale);
+                btn.Height = (int)(btn.Height * scale);
+                btn.Location = new Point((int)(btn.Location.X * scale), (int)(btn.Location.Y * scale));
+            }
         }
     }
 }
