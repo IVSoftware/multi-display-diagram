@@ -4,7 +4,7 @@ This could be simplified to not use P/Invoke perhaps. One solution you could exp
 
 [![screen selector splash][1]][1]
 
-When one of the buttons is clicked, copy the location and size of the display that has been clicked.
+When one of the buttons is clicked, copy the location and size of the display that has been clicked to the Main Form.
 
 ___
 ```csharp
@@ -81,7 +81,7 @@ public partial class DisplaySelectorForm : Form
 ```
 ___
 
-The main form code uses a technique to display a splash screen described in this [answer](https://stackoverflow.com/a/75534137/5438626).
+The main form code uses a technique to show the `DisplaySelectorForm` as a splash screen as described in this [answer](https://stackoverflow.com/a/75534137/5438626).
 
 ```csharp
 public partial class MainForm : Form
