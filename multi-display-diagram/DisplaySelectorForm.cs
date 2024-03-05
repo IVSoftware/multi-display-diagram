@@ -77,6 +77,50 @@ namespace multi_display_diagram
                 };
                 workspacePanel.Controls.Add(screenButton);
             }
+            var buttonArray = workspacePanel
+                .Controls.OfType<Button>()
+                .ToArray();
+            var bottomArray =
+                buttonArray
+                .OrderBy(_ => _.Top).ThenBy(_ => _.Left) 
+                .ToArray();
+            for (int i = 1; i < bottomArray.Length; i++)
+            {
+                var gapY = bottomArray[i].Top - bottomArray[i - 1].Bottom;
+                if (gapY > 0)
+                {
+                    for (int j = i; j < bottomArray.Length; j++)
+                    {
+                        bottomArray[j].Top -= gapY;
+                    }
+                }
+            }
+
+            var leftArray =
+                buttonArray
+                .OrderBy(_ => _.Left).ThenBy(_ => _.Top)
+                .ToArray();
+            for (int i = 1; i < leftArray.Length; i++)
+            {
+                var gapX = leftArray[i].Left - leftArray[i - 1].Right;
+                if (gapX > 0)
+                {
+                    for (int j = i; j < leftArray.Length; j++)
+                    {
+                        leftArray[j].Left -= gapX; 
+                    }
+                }
+            }
+            var widthB4 = workspacePanel.Width;
+            var heightB4 = workspacePanel.Height;
+            // Trim
+            maxRight = buttonArray.Max(btn => btn.Right);
+            maxBottom = buttonArray.Max(btn => btn.Bottom);
+            workspacePanel.Size = new Size(maxRight, maxBottom);
+            foreach (var button in buttonArray)
+            {
+                button.Anchor = AnchorStyles.Right | AnchorStyles.Bottom;
+            }
         }
     }
 }
