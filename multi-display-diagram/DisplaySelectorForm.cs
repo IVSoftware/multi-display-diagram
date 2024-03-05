@@ -55,7 +55,8 @@ namespace multi_display_diagram
                 var screenScaledHeight = (int)(screen.WorkingArea.Height * scale);
                 var screenButton = new Button
                 {
-                    Text = $"Display {screens.ToList().IndexOf(screen) + 1}\n({screen.DeviceName})",
+                    Text = $"{screens.ToList().IndexOf(screen) + 1}",
+                    Font = new Font(Font.FontFamily, 14F),
                     Size = new Size(screenScaledWidth, screenScaledHeight),
                     Location = new Point(screenScaledLeft, screenScaledTop),
                     BackColor = screen.Primary ? Color.CornflowerBlue : Color.LightGray,
@@ -77,6 +78,8 @@ namespace multi_display_diagram
                 };
                 workspacePanel.Controls.Add(screenButton);
             }
+
+            // Address gaps
             var buttonArray = workspacePanel
                 .Controls.OfType<Button>()
                 .ToArray();
