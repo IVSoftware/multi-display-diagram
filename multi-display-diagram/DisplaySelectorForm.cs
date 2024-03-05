@@ -68,10 +68,10 @@ namespace multi_display_diagram
                         &&
                         control.Tag is Screen selectedScreen
                         &&
-                        Owner is MainForm mainForm)
+                        Owner is Control owner)
                     {
-                        mainForm.Location = selectedScreen.WorkingArea.Location;
-                        mainForm.Size = selectedScreen.WorkingArea.Size;
+                        owner.Location = selectedScreen.WorkingArea.Location;
+                        owner.Size = selectedScreen.WorkingArea.Size;
                         DialogResult = DialogResult.OK;
                     }
                 };
