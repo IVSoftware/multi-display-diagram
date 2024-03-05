@@ -2,13 +2,12 @@
 
 This could be simplified to not use P/Invoke perhaps. One solution you could experiment with is to create a rectangle representing the max bounds of the multi-screen working area, and scale it to fit within a cell of a `TableLayoutPanel`. By setting it to `Anchor.None` it will be automatically centered in the single cell of the TLP at which point buttons representing the individual screens can be added.
 
-[![windows control panel next to custom version][1]][1]
+[![windows control panel next to custom version][2]][2]
 
 When one of the buttons is clicked, copy the location and size of the display that has been clicked to the Main Form.
 
 ___
 ```csharp
-
 public partial class DisplaySelectorForm : Form
 {
     public DisplaySelectorForm() => InitializeComponent();
@@ -54,7 +53,7 @@ public partial class DisplaySelectorForm : Form
             var screenScaledHeight = (int)(screen.WorkingArea.Height * scale);
             var screenButton = new Button
             {
-                Text = screen.DeviceName,
+                Text = $"Display {screens.ToList().IndexOf(screen) + 1}\n({screen.DeviceName})",
                 Size = new Size(screenScaledWidth, screenScaledHeight),
                 Location = new Point(screenScaledLeft, screenScaledTop),
                 BackColor = screen.Primary ? Color.CornflowerBlue : Color.LightGray,
@@ -110,4 +109,5 @@ public partial class MainForm : Form
 ```
 
 
-  [1]: https://i.stack.imgur.com/TjmZ5.png
+  [1]: https://i.stack.imgur.com/r8KfF.png
+  [2]: https://i.stack.imgur.com/hyuxM.png

@@ -57,7 +57,7 @@ namespace multi_display_diagram
                 var screenScaledHeight = (int)(screen.WorkingArea.Height * scale);
                 var screenButton = new Button
                 {
-                    Text = screen.DeviceName,
+                    Text = $"Display {screens.ToList().IndexOf(screen) + 1}\n({screen.DeviceName})",
                     Size = new Size(screenScaledWidth, screenScaledHeight),
                     Location = new Point(screenScaledLeft, screenScaledTop),
                     BackColor = screen.Primary ? Color.CornflowerBlue : Color.LightGray,
