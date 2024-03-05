@@ -39,8 +39,8 @@ namespace multi_display_diagram
             var workspacePanel = new Panel
             {
                 Size = workspace.Size,
-                Anchor = AnchorStyles.None,
                 BackColor = Color.White,
+                Anchor = AnchorStyles.None,
             };
 
             tableLayoutPanel.Controls.Add(workspacePanel, 0, 0);
@@ -117,10 +117,6 @@ namespace multi_display_diagram
             maxRight = buttonArray.Max(btn => btn.Right);
             maxBottom = buttonArray.Max(btn => btn.Bottom);
             workspacePanel.Size = new Size(maxRight, maxBottom);
-            foreach (var button in buttonArray)
-            {
-                button.Anchor = AnchorStyles.Right | AnchorStyles.Bottom;
-            }
         }
     }
 }
