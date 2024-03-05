@@ -2,7 +2,7 @@
 
 This could be simplified to not use P/Invoke perhaps. One solution you could experiment with is to create a rectangle representing the max bounds of the multi-screen working area, and scale it to fit within a cell of a `TableLayoutPanel`. By setting it to `Anchor.None` it will be automatically centered in the single cell of the TLP at which point buttons representing the individual screens can be added.
 
-[![screen selector splash][1]][1]
+[![windows control panel next to custom version][1]][1]
 
 When one of the buttons is clicked, copy the location and size of the display that has been clicked to the Main Form.
 
@@ -110,5 +110,4 @@ public partial class MainForm : Form
 ```
 
 
-
-  [1]: https://i.stack.imgur.com/3zoN4.png
+  [1]: https://i.stack.imgur.com/TjmZ5.png
