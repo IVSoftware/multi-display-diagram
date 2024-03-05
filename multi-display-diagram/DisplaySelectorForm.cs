@@ -31,19 +31,17 @@ namespace multi_display_diagram
                 Width = maxRight - minLeft,
                 Height = maxBottom - minTop,
             };
-            var workspacePanel =new Panel
+            var scaleX = tableLayoutPanel.Width / (double)workspace.Width;
+            var scaleY = tableLayoutPanel.Height / (double)workspace.Height;
+            var scale = Math.Min(scaleX, scaleY); 
+            workspace.Size = new Size((int)(workspace.Width * scale), (int)(workspace.Height * scale));
+
+            var workspacePanel = new Panel
             {
                 Size = workspace.Size,
                 Anchor = AnchorStyles.None,
                 BackColor = Color.White,
-                Dock = DockStyle.None,
             };
-
-            var scaleX = tableLayoutPanel.Width / (double)workspacePanel.Width;
-            var scaleY = tableLayoutPanel.Height / (double)workspacePanel.Height;
-            var scale = Math.Min(scaleX, scaleY); 
-
-            workspacePanel.Size = new Size((int)(workspace.Width * scale), (int)(workspace.Height * scale));
 
             tableLayoutPanel.Controls.Add(workspacePanel, 0, 0);
 
